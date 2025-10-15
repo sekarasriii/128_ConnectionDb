@@ -25,3 +25,15 @@ db.connect((err) => {
   console.log('Connected to Mysql successfully');
 });
 
+// --- METHOD GET: AMBIL DATA MAHASISWA ---
+app.get('/biodata', (req, res) => {
+  const sql = 'SELECT * FROM biodata';
+  db.query(sql, (err, results) => {
+    if (err) {
+      res.status(500).json({ message: 'Error fetching data', error: err });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
